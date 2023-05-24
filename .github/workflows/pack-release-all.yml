@@ -61,11 +61,11 @@ jobs:
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
           
       - name: Upload release
-        uses: svenstaro/upload-release-action@v2
+        uses: svenstaro/upload-release-action@latest
         with:
           release_name: "Release (${{ steps.date.outputs.date }})"
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          tag: latest
+          tag: "r-${{ steps.date.outputs.date }}"
           file_glob: true
           file: releases/*.zip
           overwrite: true
